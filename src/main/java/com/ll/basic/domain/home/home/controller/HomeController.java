@@ -103,6 +103,24 @@ public class HomeController {
 				.body("내용")
 				.build();
 	}
+
+	@GetMapping("/articleList")
+	@ResponseBody //
+	public List<Article> getArticles() {
+		return List.of(
+				Article.builder().title("제목1").body("내용1").build(),
+				Article.builder().title("제목2").body("내용2").build()
+		);
+	}
+
+	@GetMapping("/articleMap") //key , value
+	@ResponseBody
+	public Map<String, Article> articleMap() {
+		return Map.of(
+				"article1", Article.builder().title("제목1").body("내용1").build(),
+				"article2", Article.builder().title("제목2").body("내용2").build()
+		);
+	}
 }
 
 //@AllArgsConstructor//전부
