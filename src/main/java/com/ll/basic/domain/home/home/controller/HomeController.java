@@ -1,5 +1,7 @@
 package com.ll.basic.domain.home.home.controller;
 
+import lombok.Builder;
+import lombok.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -90,4 +92,31 @@ public class HomeController {
 	public Map<String, String> getMap() {
 		return Map.of("name", "Paul", "hobby", "reading");
 	}
+
+	@GetMapping("/article")
+	@ResponseBody
+	public Article getArticle() {
+		//return new Article("제목", "내용"); //리모콘
+		return Article
+				.builder() //객체 생성 필드에서 원하는 것을 가져온다
+				.title("제목")
+				.body("내용")
+				.build();
+	}
+}
+
+//@AllArgsConstructor//전부
+//@RequiredArgsConstructor //필수인 것만 받고 싶다 (final)
+@Builder
+@Getter //public으로 안해도 된다.
+class Article{
+	@Builder.Default //기본값을 사용할 수 있게 하는 기능
+	private long id = 1L;
+
+	private String title;
+	private String body;
+
+	@Builder.Default
+	private boolean published = true;
+
 }
