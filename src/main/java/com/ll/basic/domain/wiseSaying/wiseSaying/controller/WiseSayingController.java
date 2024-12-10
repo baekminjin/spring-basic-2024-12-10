@@ -2,7 +2,6 @@ package com.ll.basic.domain.wiseSaying.wiseSaying.controller;
 
 import com.ll.basic.domain.wiseSaying.wiseSaying.entity.WiseSaying;
 import com.ll.basic.domain.wiseSaying.wiseSaying.service.WiseSayingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,7 +13,7 @@ import java.util.List;
  public class WiseSayingController {
 	private final WiseSayingService wiseSayingService;
 
-	@Autowired //new WiseSayingService <- 스프링 부트가 해준다. // 받으면 된다.
+	//@Autowired // Component new WiseSayingService <- 스프링 부트가 해준다. // 생략이 가능하다.
 	public WiseSayingController(WiseSayingService wiseSayingService) {
 		this.wiseSayingService = wiseSayingService;
 	}
